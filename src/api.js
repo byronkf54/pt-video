@@ -23,12 +23,12 @@ async function createRoom() {
     method: "POST",
     body: JSON.stringify(options),
     mode: 'cors',
-  }),
-    room = await response.json();
-  return room;
+  });
+  // room = await response.json();
+  // return room;
 
   // Comment out the above and uncomment the below, using your own URL
-  // return { url: "https://your-domain.daily.co/hello" };
+  return { url: "https://pocket-tutor-video.daily.co/8nxKvedR1JyKrRQCIDO2" };
 }
 
 export default { createRoom };
