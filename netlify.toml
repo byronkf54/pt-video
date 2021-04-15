@@ -3,7 +3,7 @@
   publish = "build/"
 
 [template.environment]
-  DAILY_API_KEY = "Replace with API key"
+  DAILY_API_KEY = "65385902-97ea-40d6-bf5b-0cb9e42de05c"
 
 [[redirects]]
   # Proxies the Daily /rooms endpoint, POST will create a room and a GET will return a list 
