@@ -5,6 +5,7 @@ const TYPE_MUTE_MIC = 'mute-mic';
 const TYPE_SCREEN = 'screen';
 const TYPE_LEAVE = 'leave';
 const TYPE_CHAT = 'chat';
+const TYPE_FLIP_CAMERA = 'flip';
 
 /**
  * Props:
@@ -94,6 +95,26 @@ export default function Icon(props) {
             fillRule="evenodd"
           />
         );
+      case TYPE_FLIP_CAMERA:
+        return (
+            <g
+                id="Symbols"
+                stroke="none"
+                strokeWidth="1"
+                fillRule="evenodd"
+            >
+              <g
+                  id="Assets-for-Export"
+                  transform="translate(-200.000000, 0.000000)"
+              >
+                <g id={"FaCamera"}
+                   fill={getFillColor()}
+                   fillRule="evenodd">
+
+                </g>
+              </g>
+            </g>
+        );
       default:
         throw new Error();
     }
@@ -112,4 +133,4 @@ export default function Icon(props) {
   );
 }
 
-export { TYPE_MUTE_CAMERA, TYPE_MUTE_MIC, TYPE_SCREEN, TYPE_LEAVE, TYPE_CHAT };
+export { TYPE_MUTE_CAMERA, TYPE_MUTE_MIC, TYPE_SCREEN, TYPE_LEAVE, TYPE_CHAT, TYPE_FLIP_CAMERA };

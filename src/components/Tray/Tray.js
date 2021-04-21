@@ -11,6 +11,7 @@ import Chat from '../Chat/Chat';
 import CallObjectContext from '../../CallObjectContext';
 import { logDailyEvent } from '../../logUtils';
 import DailyIframe from '@daily-co/daily-js';
+import {TYPE_FLIP_CAMERA} from "../Icon/Icon";
 
 /**
  * Gets [isCameraMuted, isMicMuted, isSharingScreen].
@@ -76,6 +77,20 @@ export default function Tray(props) {
     setChatHighlight(!highlightedChat);
   }
 
+  function flipCamera() {
+    callObject.getInputDevices().then(r => callObject.enumerateDevices().then(devices => {
+      console.log(devices);
+      for (let i = 0; i < devices.length; i++) {
+        if (devices[i].kind === "videoinput") {
+          callObject.setInputDevicesAsync({
+            camera : { deviceId: devices[i].deviceId}
+          })
+        }
+      }
+    }));
+
+  }
+
   /**
    * Start listening for participant changes when callObject is set (i.e. when the component mounts).
    * This event will capture any changes to your audio/video mute state.
@@ -134,6 +149,10 @@ export default function Tray(props) {
         onClick={toggleChat}
       />
       <Chat onClickDisplay={displayChat} notification={handleNewChat} />
+      <TrayButton
+          type={TYPE_FLIP_CAMERA}
+          onClick={flipCamera}
+      />
       <TrayButton
         type={TYPE_LEAVE}
         disabled={props.disabled}
